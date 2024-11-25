@@ -71,10 +71,20 @@ const allApi = {
                 title: '修改密码',
                 isCache: true,
                 hidden: true,
+                
             },
             {
+                name: 'project-manage',
                 title: '项目管理空间',
-                iconName: 'svg:cog-fill.svg',
+                isCache: true,
+                content: '',
+                iconName: 'svg:project-manage.svg',
+                showTagIcon: true,
+            },
+            {
+                title: '',
+                iconName: 'svg:project-manage.svg',
+                hidden: true,
                 childs: [
                     {
                         name: 'bt-permission',
@@ -105,12 +115,11 @@ const allApi = {
                     },
                     {
                         name: 'user-list',
-                        title: '用户管理',
+                        title: '事件抽取模板选择',
                         isCache: true,
                         content: '',
                         iconName: 'svg:user-fill.svg',
                         showTagIcon: true,
-                        hidden: true,
                     },
                 ],
             },

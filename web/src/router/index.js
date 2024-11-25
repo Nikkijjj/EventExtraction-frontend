@@ -94,7 +94,19 @@ export const constantRoutes = [
                     title: '新标签',
                 },
             },
+            /**事件属性抽取平台 */
+            {
+                path: 'project-manage',
+                component: () => import('@/views/exampleViews/projectManage/index.vue'),
+                name: 'project-manage',
+                meta: {
+                    layoutName: 'main',
+                    redirectName: 'main-redirect',
+                    hasTag: true,
+                },
+            },
             /** 一些页面例子 */
+            
             {
                 path: 'index',
                 component: () => import('@/views/system/main/index.vue'),

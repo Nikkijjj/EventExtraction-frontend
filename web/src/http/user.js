@@ -73,17 +73,9 @@ const allApi = {
                 hidden: true,
             },
             {
-                title: '系统管理',
+                title: '项目管理空间',
                 iconName: 'svg:cog-fill.svg',
                 childs: [
-                    // {
-                    //     name: 'menu',
-                    //     title: '菜单管理',
-                    //     isCache: true,
-                    //     content: '用户目录配置',
-                    //     iconName: 'svg:alignleft-fill.svg',
-                    //     showTagIcon: true,
-                    // },
                     {
                         name: 'bt-permission',
                         title: '按钮权限管理',
@@ -91,6 +83,7 @@ const allApi = {
                         content: '与菜单分开',
                         iconName: 'svg:borderverticle-fill.svg',
                         showTagIcon: true,
+                        hidden: true,
                     },
                     {
                         name: 'user-list',
@@ -99,6 +92,7 @@ const allApi = {
                         content: '',
                         iconName: 'svg:user-fill.svg',
                         showTagIcon: true,
+                        hidden: true,
                     },
                     {
                         name: 'role-list',
@@ -107,6 +101,16 @@ const allApi = {
                         content: '',
                         iconName: 'svg:user-group-fill.svg',
                         showTagIcon: true,
+                        hidden: true,
+                    },
+                    {
+                        name: 'user-list',
+                        title: '用户管理',
+                        isCache: true,
+                        content: '',
+                        iconName: 'svg:user-fill.svg',
+                        showTagIcon: true,
+                        hidden: true,
                     },
                 ],
             },

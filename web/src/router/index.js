@@ -166,6 +166,36 @@ export const constantRoutes = [
                 },
             },
             {
+                path: 'extract-sample',
+                component: () => import('@/views/exampleViews/extractionProcess/components/extractSample.vue'),
+                name: 'extract-sample',
+                meta: {
+                    layoutName: 'main',
+                    redirectName: 'main-redirect',
+                    hasTag: true,
+                },
+            },
+            {
+                path: 'model-select',
+                component: () => import('@/views/exampleViews/extractionProcess/components/modelSelect.vue'),
+                name: 'model-select',
+                meta: {
+                    layoutName: 'main',
+                    redirectName: 'main-redirect',
+                    hasTag: true,
+                },
+            },
+            {
+                path: 'extract-wait',
+                component: () => import('@/views/exampleViews/extractionProcess/components/extractWait.vue'),
+                name: 'extract-wait',
+                meta: {
+                    layoutName: 'main',
+                    redirectName: 'main-redirect',
+                    hasTag: true,
+                },
+            },
+            {
                 path: 'icon-list',
                 component: () => import('@/views/system/iconList/index.vue'),
                 name: 'icon-list',

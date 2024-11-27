@@ -1,7 +1,7 @@
 <template>
-  <div class="extract-wait">
-    <el-row :gutter="20">
-      <el-col :span="8" v-for="(card, index) in cards" :key="index">
+  <div class="extract-wait" style="width: 82vw; border-radius: 10px; font-size: 15px; background-color: #fff;height: 70vh;">
+    <el-row >
+      <el-col :span="6" v-for="(card, index) in cards" :key="index">
         <el-card class="custom-card" style="max-width: auto; position: relative;">
           <template #header>
             <div class="card-header">
@@ -26,7 +26,7 @@
 
 import { ref, onMounted } from 'vue';
 import axios from 'axios';
-import {ElMessage}  from 'element-plus';
+import {ElMessage} from 'element-plus';
 
 // const cards = ref([]);
 
@@ -34,6 +34,8 @@ import {ElMessage}  from 'element-plus';
 const cards = ref([
   { title: 'UIE-Base', content: '111', status: '已开通', statusType: 'success' },
   { title: 'UIE-Finace', content: '222', status: '已开通', statusType: 'success' },
+  { title: '新建模型', content: '333', status: '待开通', statusType: 'warning' },
+  { title: '新建模型', content: '333', status: '待开通', statusType: 'warning' },
   { title: '新建模型', content: '333', status: '待开通', statusType: 'warning' }
 ]);
 
@@ -60,7 +62,7 @@ const handleButtonClick = (index: number) => {
 
 </script>
 
-<style lang="css">
+<style lang="scss" scoped>
 .card-header {
   display: flex;
   justify-content: space-between;
@@ -68,9 +70,7 @@ const handleButtonClick = (index: number) => {
   padding: 10px;
 }
 
-.extract-wait {
-  padding: 20px;
-}
+
 
 .item {
   margin: 10px;
@@ -83,10 +83,13 @@ const handleButtonClick = (index: number) => {
 
 .el-card {
   max-width: auto; /* 这可能导致卡片宽度超出其内容宽度，考虑移除或替换为具体宽度值 */
-  height: 300px; /* 设置卡片的固定高度 */
+  height: 260px; /* 设置卡片的固定高度 */
   overflow: auto; /* 如果内容超出卡片高度，允许滚动 */
   display: flex;
   flex-direction: column; /* 使卡片内容垂直排列 */
+  margin-top: 25px;
+  margin-right: 10px;
+  margin-left: 10px;
 }
 
 .el-card__header {

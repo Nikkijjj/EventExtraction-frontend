@@ -82,6 +82,22 @@ const allApi = {
                 showTagIcon: true,
             },
             {
+                name: 'extraction-process',
+                title: '事件抽取模板选择',
+                isCache: true,
+                content: '',
+                iconName: 'svg:user-fill.svg',
+                showTagIcon: true,
+            },
+            {
+                name: 'create-schema',
+                title: '事件抽取模板创建',
+                isCache: true,
+                content: '',
+                iconName: 'svg:user-fill.svg',
+                showTagIcon: true,
+            },
+            {
                 title: '',
                 iconName: 'svg:project-manage.svg',
                 hidden: true,
@@ -140,14 +156,7 @@ const allApi = {
                         showTagIcon: true,
                         hidden: false,
                     },
-                    {
-                        name: 'user-list',
-                        title: '事件抽取模板选择',
-                        isCache: true,
-                        content: '',
-                        iconName: 'svg:user-fill.svg',
-                        showTagIcon: true,
-                    },
+                    
                 ],
             },
             {

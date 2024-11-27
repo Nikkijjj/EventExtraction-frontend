@@ -105,6 +105,27 @@ export const constantRoutes = [
                     hasTag: true,
                 },
             },
+            /**事件属性抽取平台 */
+            {
+                path: 'extraction-process',
+                component: () => import('@/views/exampleViews/extractionProcess/index.vue'),
+                name: 'extraction-process',
+                meta: {
+                    layoutName: 'main',
+                    redirectName: 'main-redirect',
+                    hasTag: true,
+                },
+            },
+            {
+                path: 'create-schema',
+                component: () => import('@/views/exampleViews/createSchema/index.vue'),
+                name: 'create-schema',
+                meta: {
+                    layoutName: 'main',
+                    redirectName: 'main-redirect',
+                    hasTag: true,
+                },
+            },
             /** 一些页面例子 */
             
             {

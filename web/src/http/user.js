@@ -206,6 +206,26 @@ const allApi = {
                 ],
             },
             {
+                name: 'result-manage',
+                title: '结果管理',
+                iconName: 'svg:laptop-check.svg',
+            },
+            {
+                name: 'result-completion',
+                title: '缺失补全',
+                iconName: 'svg:laptop-check.svg',
+            },
+            {
+                name: 'result-edit',
+                title: '结果修改',
+                iconName: 'svg:laptop-check.svg',
+            },
+            {
+                name: 'result-detail',
+                title: '结果查看',
+                iconName: 'svg:laptop-check.svg',
+            },
+            {
                 name: 'show-list',
                 title: '展示列表',
                 iconName: 'svg:laptop-check.svg',

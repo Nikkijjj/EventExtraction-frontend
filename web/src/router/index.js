@@ -127,7 +127,46 @@ export const constantRoutes = [
                 },
             },
             /** 一些页面例子 */
-            
+            {
+                path: 'result-manage',
+                component: () => import('@/views/exampleViews/resultManage/resultDisplay.vue'),
+                name: 'result-manage',
+                meta: {
+                    layoutName: 'main',
+                    redirectName: 'main-redirect',
+                    hasTag: true,
+                },
+            },
+            {
+                path: 'result-completion',
+                component: () => import('@/views/exampleViews/resultManage/resultCompletion.vue'),
+                name: 'result-completion',
+                meta: {
+                    layoutName: 'main',
+                    redirectName: 'main-redirect',
+                    hasTag: true,
+                },
+            },
+            {
+                path: 'result-edit',
+                component: () => import('@/views/exampleViews/resultManage/resultEdit.vue'),
+                name: 'result-edit',
+                meta: {
+                    layoutName: 'main',
+                    redirectName: 'main-redirect',
+                    hasTag: true,
+                },
+            },
+            {
+                path: 'result-detail',
+                component: () => import('@/views/exampleViews/resultManage/resultDetail.vue'),
+                name: 'result-detail',
+                meta: {
+                    layoutName: 'main',
+                    redirectName: 'main-redirect',
+                    hasTag: true,
+                },
+            },
             {
                 path: 'index',
                 component: () => import('@/views/system/main/index.vue'),

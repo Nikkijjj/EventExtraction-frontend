@@ -156,17 +156,17 @@ const progressEnd = async () => {
     }
 }
 
-//返回到结果展示页面
+//返回到结果展示页面，此时补全操作可能未完成
 const goBack = async () => {
     router.push({
         name: 'result-manage'
     });
 }
 
-//跳转到结果查看界面，查看的数据来自上个页面存入localStorage的数值，所以这里只需跳转，无需再次存储到localStorage
+//跳转到结果展示页面，此时补全操作已完成（可以设置成进度条100%才能点击，不然disabled
 const resultCheck = async () => {
     router.push({
-        name: 'result-detail'
+        name: 'result-manage'
     });
 }
 

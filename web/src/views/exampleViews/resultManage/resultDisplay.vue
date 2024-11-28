@@ -183,6 +183,7 @@ const loadAllAnnouncments = async () => {
     // }
 }
 
+//跳转到缺失补全页面
 const goToComplete = async (row) => {
     const selectedId = row.id;
     localStorage.setItem('completionId', JSON.stringify(selectedId));
@@ -191,7 +192,7 @@ const goToComplete = async (row) => {
     });
 }
 
-//等待配置路由，跳转到公告详情页面
+//跳转到公告详情页面
 const goToDetail = async (row) => {
     const selectedId = row.id;
     localStorage.setItem('detailId', JSON.stringify(selectedId));
@@ -228,7 +229,7 @@ const deleteAnnouncement = async () => {
     }
 }
 
-//等待配置路由，进行批量编辑
+//进行批量编辑
 const batchEdit = async () => {
     if (selectdata.value.length === 0) {
         ElMessage.warning('请先选择要修改的公告！');
@@ -239,6 +240,7 @@ const batchEdit = async () => {
     router.push({ name: 'result-edit' });
 };
 
+//进行批量缺失补全
 const batchCompletion = async () => {
     if (selectdata.value.length === 0) {
         ElMessage.warning('请先选择要执行缺失补全的公告！');
@@ -247,7 +249,6 @@ const batchCompletion = async () => {
     const selectedIds = selectdata.value.map(item => item.id);
     localStorage.setItem('completionId', JSON.stringify(selectedIds));
     router.push({ name: 'result-completion' });
-
 };
 </script>
 

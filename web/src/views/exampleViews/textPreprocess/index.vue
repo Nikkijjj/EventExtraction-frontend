@@ -1,29 +1,34 @@
 <template>
-    <div class="main-container"
-    >
-        <div class="header-container">
-            <el-button style="margin-left: 10px" type="primary" :icon="CirclePlus">新增</el-button>
-            <el-icon style="margin-left: 15px"><Warning /></el-icon>
-            <span style="margin-left: 5px"
-                >当前任务文本事件类型为：
-                <span style="color: #f56c6c"
-                    ><strong>{{ taskType }}</strong></span
-                >
-            </span>
-            <div class="buttons-container">
-                <el-button type="primary" @click="handleCreate">从操作库导入</el-button>
-                <el-button type="success" @click="handleImport">批量导入</el-button>
-                <el-button type="warning" @click="handleDownload">下载</el-button>
-            </div>
+    <div class="container">
+        <div class="card" style="height: 150px;">
+            <p class="intro-text">页面介绍：操作库页面</p>
+            <p class="intro-text">权限：事件专员</p>
+            <p class="intro-text">数据：后台每天批量导入（事件专员）, 手动从数据库导入, 键入（事件专员）</p>
+            <p class="intro-text">页面功能：预览待处理数据，从数据库导入文本，点击新建可以新建一条不属于数据库内容的文本，点击批量导入可以导入多条公告到自己的操作库中</p>
         </div>
-        <div class="table-container">
+
+        <div class="card" style="height: 530px;">
+            <div class="header-container">
+                <h3>以下是数据库导入的数据</h3>
+                <div class="buttons-container">
+                    <el-input
+                   
+                        style="width: 240px"
+                        placeholder="输入标题关键词"
+                        :prefix-icon="Search"
+                        />
+                    <el-button type="primary" @click="addNewDialogVisible = true">新建</el-button>
+                    <el-button type="success" @click="handleImport">批量导入</el-button>
+                    <el-button type="warning" @click="handleDownload">下载</el-button>
+                </div>
+            </div>
             <el-table
                 ref="multipleTable"
                 border
                 :data="pagedData"
                 @selection-change="handleSelectionChange"
                 row-key="index"
-                height="60vh"
+                height="50vh"
                 class="table"
                 style="width: 82vw; border-radius: 10px; font-size: 15px"
                 :header-cell-style="headerCellStyle"
@@ -80,17 +85,10 @@
                         >
                             查看
                         </el-button>
-                        <el-button
-                            link
-                            size="large"
-                            type="danger"
-                            @click="handleDelete([scope.row])"
-                        >
-                            删除
-                        </el-button>
                     </template>
                 </el-table-column>
             </el-table>
+
             <el-pagination
                 layout="prev, pager, next"
                 class="pagination-container"
@@ -100,16 +98,35 @@
                 size="large"
             />
         </div>
+      <!-- 对话框 -->
+      <el-dialog v-model="addNewDialogVisible" title="新建公告">
+        <el-form class="upload-form">
+          <el-form-item label="公告编号">
+            <el-input v-model="newNotice.noticeId" placeholder="请输入公告编号"/>
+          </el-form-item>
+          <el-form-item label="公告标题">
+            <el-input v-model="newNotice.title" placeholder="请输入公告标题"/>
+          </el-form-item>
+          <el-form-item label="公告内容">
+            <el-input type="textarea" v-model="newNotice.content" placeholder="请输入公告内容"/>
+          </el-form-item>
+        </el-form>
+        <span slot="footer" class="dialog-footer">
+          <el-button @click="addNewDialogVisible = false">取 消</el-button>
+          <el-button type="primary" >添 加</el-button>
+        </span>
+      </el-dialog>
     </div>
 </template>
 
 <script lang="ts" setup>
 import { ref, onMounted, computed } from 'vue';
 import { ElMessageBox, ElMessage }from 'element-plus';
-import { saveAs } from 'file-saver';
+
 import * as XLSX from 'xlsx';
 import { useRouter } from 'vue-router';
-import { CirclePlus, Warning } from '@element-plus/icons-vue';
+import { CirclePlus, Warning,Search } from '@element-plus/icons-vue';
+
 
 // 定义响应式数据
 const taskType = ref('');
@@ -144,7 +161,21 @@ const tableData = ref([
         summary: '财务稳健',
         detailUrl: 'http://example.com/details/1',
     },
+    {
+        index: 4,
+        title: '2023年度业绩预告：实现稳健增长，展望未来机遇',
+        content: '在充满挑战与机遇的2023年，公司凭借卓越的团队合作和战略规划，实现了显著的业绩增长。我们的总收入达到了历史新高，这一成绩的取得，得益于我们对市场趋势的敏锐洞察和对客户需求的深刻理解。',
+        publishTime: '2024-08-15',
+        summary: '业绩预期',
+        detailUrl: 'http://example.com/details/1',
+    },  
 ]);
+
+const newNotice = ref({
+    noticeId: '',
+    title: '',
+    content: '',
+});
 
 // 分页数据的计算属性
 const pagedData = computed(() => {
@@ -153,6 +184,8 @@ const pagedData = computed(() => {
     const start = (currentPage - 1) * pageSize;
     return tableData.value.slice(start, start + pageSize);
 });
+
+const addNewDialogVisible = ref(false);
 
 // 行选择变更时的处理函数
 const handleSelectionChange = (selection: any[]) => {
@@ -257,22 +290,12 @@ const headerCellStyle = (column: any) => {
 };
 </script>
 
-<style lang="css" scoped>
-.main-container {
-    width: calc(100% - 20px);  /* 总宽度减去左右 10px 间距 */
-    border-radius: 5px;
-    font-size: 15px;
-    background-color: #fff;
-    height: 70vh;
-    margin: 10px;
-    margin-bottom: 0px;
-}
+<style lang="css">
 .header-container {
     display: flex;
     align-items: center; /* 垂直居中 */
     /* justify-content: space-between;  */
-    margin-right: auto;
-    width: 100%; /* 确保 header 容器占满整个父容器 */
+    margin-left: auto;
     height: 5vh;
 }
 
@@ -290,5 +313,63 @@ const headerCellStyle = (column: any) => {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.upload-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin:20px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 10px;
+}
+
+.card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    overflow: auto;
+}
+
+.intro-text {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #555;
+    margin-bottom: 12px;
+}
+
+.event-type {
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+}
+
+.event-type span {
+    color: #007bff;
+}
+
+.el-table {
+    font-family: 'Arial', sans-serif;
+    font-weight: normal;
+    font-size: 13px;
+    line-height: 4;
+    text-align: center;
+    overflow: auto;
+}
+
+.el-table .el-table__header {
+    background-color: #f2f3f5;
+}
+
+.el-table th {
+    height: 45px;
+    font-size: 16px;
+    font-weight: bold;
 }
 </style>

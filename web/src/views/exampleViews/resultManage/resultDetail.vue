@@ -1,7 +1,7 @@
 <template>
-    <div class="container">
-        <div class="card left-card">
-            <el-button class="card-btn1" @click="goBack"><el-icon>
+    <div class="container3">
+        <div class="card3 left-card">
+            <el-button class="card-btn" @click="goBack"><el-icon>
                     <ArrowLeft />
                 </el-icon>返回</el-button>
             <div style="text-align: center; width: 100%; margin-top: 30px; font-size: 24px; font-weight: bold;">属性信息
@@ -20,8 +20,8 @@
             </div>
         </div>
 
-        <div class="card right-card">
-            <el-button class="card-btn2" @click="downloadData"><el-icon>
+        <div class="card3 right-card">
+            <el-button class="card-btn" @click="downloadData"><el-icon>
                     <Download />
                 </el-icon>下载</el-button>
             <div style="text-align: center; width: 100%; margin-top: 30px; font-size: 22px; font-weight: bold;">来源文本
@@ -39,6 +39,7 @@
 
 <script setup lang="ts">
 import { ref, onMounted, nextTick } from 'vue';
+import { Download, ArrowLeft } from '@element-plus/icons-vue';
 import axios from 'axios';
 import { useRouter } from 'vue-router';
 import FileSaver from "file-saver"; 
@@ -53,7 +54,6 @@ interface Announcement {
     type: string
     completion: number
     rate: number
-    template: string
     result: string
 }
 
@@ -73,7 +73,7 @@ onMounted(async () => {
 })
 
 const loadAnnouncment = async () => {
-    const storedId = localStorage.getItem('editId');
+    const storedId = localStorage.getItem('detailId');
     let selectedId = storedId;
     if (storedId) {
         selectedId = JSON.parse(storedId);
@@ -142,14 +142,14 @@ const downloadData = async () => {
 </script>
 
 <style lang="scss">
-.container {
+.container3 {
     display: flex;
     flex-direction: row;
     gap: 10px;
     padding: 20px;
 }
 
-.card {
+.card3 {
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
@@ -161,8 +161,7 @@ const downloadData = async () => {
     position: relative;
 }
 
-.card-btn1,
-.card-btn2 {
+.card-btn {
     position: absolute;
     top: 10px;
 }

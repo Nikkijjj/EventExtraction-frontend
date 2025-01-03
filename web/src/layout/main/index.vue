@@ -155,7 +155,7 @@ export default defineComponent({
                     :src="dataContainer.img.img_1"
                     fit="cover"
                 />
-                <div class="name">毒蘑菇 - 管理</div>
+                <div class="name">事件属性抽取平台</div>
             </div>
             <div class="right">
                 <Navbar

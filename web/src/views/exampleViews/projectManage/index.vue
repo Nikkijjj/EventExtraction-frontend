@@ -67,7 +67,17 @@
                     </div>
                     <div style="display: flex; align-items: center; color: #cccccc">|</div>
                     <div style="display: flex; align-items: center">
-                        <el-button type="text" style="color: #18c8bd">删除</el-button>
+                        <el-popconfirm
+                            confirm-button-text="确定"
+                            cancel-button-text="取消"
+                            icon-color="#626AEF"
+                            title="确定删除此条模板?"
+                            @confirm="deleteProject(item.project_id)"
+                        >
+                            <template #reference>
+                                <el-button type="text" style="color: #18c8bd">删除</el-button>
+                            </template>
+                        </el-popconfirm>
                     </div>
                 </div>
             </el-card>
@@ -127,9 +137,7 @@
         <template #footer>
             <div class="dialog-footer">
                 <el-button @click.prevent="addProjectDialoagVisible = false">取消</el-button>
-                <el-button type="primary" @click.prevent="addProjectDialoagVisible = false">
-                    确认
-                </el-button>
+                <el-button type="primary" @click.prevent="addProject"> 确认 </el-button>
             </div>
         </template>
     </el-dialog>
@@ -149,12 +157,13 @@
 
 <script lang="ts" setup>
 import { Plus } from '@element-plus/icons-vue';
+import { ElMessage } from 'element-plus';
 import { reactive, ref } from 'vue';
 import { useRouter } from 'vue-router';
 
 const router = useRouter();
 interface Project {
-    project_id: string;
+    project_id: number;
     project_name: string;
     event_type: string;
     ee_schema: string;
@@ -167,7 +176,7 @@ const projectData = reactive<{
 }>({
     projectList: [
         {
-            project_id: '111',
+            project_id: 1,
             project_name: '产研院项目01',
             event_type: '公司上市',
             ee_schema: '公司上市（专家推荐）',
@@ -176,37 +185,37 @@ const projectData = reactive<{
             use: '',
         },
         {
-            project_id: '111',
-            project_name: '产研院项目01',
+            project_id: 2,
+            project_name: '产研院项目02',
             event_type: '公司上市',
-            ee_schema: '公司上市（专家推荐）',
-            ee_model: 'UIE-base',
+            ee_schema: '公司上市（个人创建）',
+            ee_model: 'UIE-Finace',
             ee_progress: '进行中',
             use: '',
         },
         {
-            project_id: '111',
-            project_name: '产研院项目01',
-            event_type: '公司上市',
-            ee_schema: '公司上市（专家推荐）',
-            ee_model: 'UIE-base',
+            project_id: 2,
+            project_name: '产研院项目03',
+            event_type: '企业中标',
+            ee_schema: '企业中标',
+            ee_model: 'UIE-Finace',
             ee_progress: '未开始',
             use: '',
         },
         {
-            project_id: '111',
-            project_name: '产研院项目01',
-            event_type: '公司上市',
-            ee_schema: '公司上市（专家推荐）',
-            ee_model: 'UIE-base',
+            project_id:2,
+            project_name: '产研院项目04',
+            event_type: '高管变动',
+            ee_schema: '高管变动',
+            ee_model: 'UIE-base-en',
             ee_progress: '已完成',
             use: '',
         },
         {
-            project_id: '111',
-            project_name: '产研院项目01',
-            event_type: '公司上市',
-            ee_schema: '公司上市（专家推荐）',
+            project_id: 3,
+            project_name: '产研院项目05',
+            event_type: '企业收购',
+            ee_schema: '企业收购',
             ee_model: 'UIE-base',
             ee_progress: '已完成',
             use: '',
@@ -239,14 +248,23 @@ const handleCurrentChange = (page: number) => {
     console.log('页' + currentPage.value);
     //   searchMeetings(currentPage.value, pageSize.value); // 重新加载数据
 };
-
+//跳转到抽取流程界面
 function editProject(project: Project) {
     //跳转时将项目信息存储到localStorage 使用JSON.parse(p).project_name使用
     localStorage.setItem('project', JSON.stringify(project));
     const p = localStorage.getItem('project');
-    console.log("存储的项目信息："+JSON.parse(p).project_name);
+    console.log('存储的项目信息：' + JSON.parse(p).project_name);
     //跳转到事件抽取流程页面
     router.push({ name: 'extraction-process' });
+}
+//删除已有项目
+function deleteProject(project_id: string) {
+    ElMessage.success('成功删除一条模板！');
+}
+//新增事件属性抽取项目
+function addProject() {
+    addProjectDialoagVisible.value = false;
+    ElMessage.success('成功新增一个事件属性抽取项目！');
 }
 </script>
 

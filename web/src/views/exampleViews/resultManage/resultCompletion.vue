@@ -1,11 +1,11 @@
 <template>
-    <div class="container">
-        <div class="card" style="height: 30px;">
-            <p class="intro-text">缺失补全：事件论元补全模块主要面向过程性事件完整事件数据构造，以及多文档联合事件抽取的缺失论元补全，从而优化抽取效果。</p>
+    <div class="container2">
+        <div class="card2" style="height: 30px;">
+            <p class="intro-text2">缺失补全：事件论元补全模块主要面向过程性事件完整事件数据构造，以及多文档联合事件抽取的缺失论元补全，从而优化抽取效果。</p>
         </div>
 
-        <div class="card" style="height: 440px; position: relative;">
-            <el-table :data="pagedData" style="width: 100%; margin-top: 12px" :max-height="240"
+        <div class="card2down" style="height: 440px; position: relative;">
+            <el-table :data="pagedData" style="width: 100%; margin-top: 12px" :max-height="200"
                 v-model:selection="selectdata" @selection-change="handleSelectionChange">
                 <el-table-column type="selection" width="80" />
                 <el-table-column property="id" label="公告编号" width="110" sortable>
@@ -55,7 +55,6 @@ interface Announcement {
     type: string
     completion: number
     rate: number
-    template: string
     result: string
 }
 
@@ -68,14 +67,14 @@ const currentPage = ref(1);  //表示当前页数
 const pageSize = 5;  // 每页显示的公告数
 const size = ref<ComponentSize>('default');
 const tableData: Announcement[] = [
-    { id: 1, title: '公告1', content: '内容1', type: '类型1', completion: 1, rate: 95, template: '模板1', result: '结果1' },
-    { id: 2, title: '公告2', content: '内容2', type: '类型2', completion: 0, rate: 85, template: '模板2', result: '结果2' },
-    { id: 3, title: '公告1', content: '内容1', type: '类型1', completion: 1, rate: 95, template: '模板1', result: '结果1' },
-    { id: 4, title: '公告2', content: '内容2', type: '类型2', completion: 0, rate: 85, template: '模板2', result: '结果2' },
-    { id: 5, title: '公告1', content: '内容1', type: '类型1', completion: 1, rate: 95, template: '模板1', result: '结果1' },
-    { id: 6, title: '公告2', content: '内容2', type: '类型2', completion: 0, rate: 85, template: '模板2', result: '结果2' },
-    { id: 7, title: '公告1', content: '内容1', type: '类型1', completion: 1, rate: 95, template: '模板1', result: '结果1' },
-    { id: 8, title: '公告2', content: '内容2', type: '类型2', completion: 0, rate: 85, template: '模板2', result: '结果2' },
+    { id: 1, title: '公告1', content: '内容1', type: '类型1', completion: 1, rate: 95, result: '结果1' },
+    { id: 2, title: '公告2', content: '内容2', type: '类型2', completion: 0, rate: 85, result: '结果2' },
+    { id: 3, title: '公告1', content: '内容1', type: '类型1', completion: 1, rate: 95, result: '结果1' },
+    { id: 4, title: '公告2', content: '内容2', type: '类型2', completion: 0, rate: 85, result: '结果2' },
+    { id: 5, title: '公告1', content: '内容1', type: '类型1', completion: 1, rate: 95, result: '结果1' },
+    { id: 6, title: '公告2', content: '内容2', type: '类型2', completion: 0, rate: 85, result: '结果2' },
+    { id: 7, title: '公告1', content: '内容1', type: '类型1', completion: 1, rate: 95, result: '结果1' },
+    { id: 8, title: '公告2', content: '内容2', type: '类型2', completion: 0, rate: 85, result: '结果2' },
 ];
 
 const progress = ref(0); // 进度百分比
@@ -178,14 +177,14 @@ onUnmounted(() => {
 </script>
 
 <style lang="scss">
-.container {
+.container2 {
     display: flex;
     flex-direction: column;
     gap: 20px;
     padding: 20px;
 }
 
-.card {
+.card2 {
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
@@ -193,7 +192,17 @@ onUnmounted(() => {
     overflow: auto;
 }
 
-.intro-text {
+.card2down {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    overflow: auto;
+    flex-grow: 1;
+    overflow-y: auto;
+}
+
+.intro-text2 {
     font-size: 16px;
     line-height: 1.6;
     color: #555;

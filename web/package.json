@@ -1,9 +1,9 @@
 {
-    "name": "dumogu-admin",
+    "name": "eventExtraction-admin",
     "private": true,
     "version": "1.0.1",
-    "description": "毒蘑菇 - 管理",
-    "author": "23朵毒蘑菇",
+    "description": "事件抽取 - 管理",
+    "author": "",
     "license": "MIT",
     "scripts": {
         "dev": "vite",
@@ -18,7 +18,8 @@
         "cropperjs": "1.6.1",
         "docxtemplater": "^3.42.1",
         "docxtemplater-image-module-free": "1.1.1",
-        "echarts": "5.4.3",
+        "echarts": "^5.3.3",
+        "echarts-wordcloud": "^2.0.0",
         "element-plus": "^2.8.8",
         "file-saver": "^2.0.5",
         "glob": "10.3.4",

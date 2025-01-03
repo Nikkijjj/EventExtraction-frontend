@@ -21,7 +21,7 @@
             <ExtractSample />
         </div>
         <div v-if="currentStep===1">
-            <ChooseSchema />
+            <ChooseSchema :status="inProcess"/>
         </div>
         <div v-if="currentStep===2">
             <ModelSelect />
@@ -112,6 +112,7 @@ import { useRouter } from 'vue-router';
 const router = useRouter();
 const currentStep = ref(0);
 const tipDialogVisible = ref(true);
+const inProcess="inProcess";
 //步骤条上一步
 const preStep = () => {
     if (currentStep.value > 0) currentStep.value--;
@@ -139,10 +140,12 @@ function eddExtraction() {
     //发送请求终止
 }
 //查看抽取结果 调用组件内函数
-function checkExtraction() {}
+function checkExtraction() {
+    router.push({ name: 'result-manage' });
+}
 </script>
 
-<style>
+<style lang="scss" scoped>
 .step-Component {
     display: flex;
     justify-content: center;
@@ -154,6 +157,7 @@ function checkExtraction() {}
     align-items: center;
     border-radius: 5px;
     margin: 10px;
+    margin-bottom: 0px;
     background-color: #ffffff;
     height: 10vh;
 }

@@ -105,7 +105,6 @@ export const constantRoutes = [
                     hasTag: true,
                 },
             },
-            /**事件属性抽取平台 */
             {
                 path: 'extraction-process',
                 component: () => import('@/views/exampleViews/extractionProcess/index.vue'),
@@ -117,9 +116,67 @@ export const constantRoutes = [
                 },
             },
             {
-                path: 'create-schema',
+                path: 'text-preprocess',
+                component: () => import('@/views/exampleViews/textPreprocess/index.vue'),
+                name: 'text-preprocess',
+                meta: {
+                    layoutName: 'main',
+                    redirectName: 'main-redirect',
+                    hasTag: true,
+                },
+            },
+            {
+                path: 'schema-manage',
+                component: () => import('@/views/exampleViews/schemaManage/index.vue'),
+                name: 'schema-manage',
+                meta: {
+                    layoutName: 'main',
+                    redirectName: 'main-redirect',
+                    hasTag: true,
+                },
+            },
+            {
+                path: 'schema-create',
                 component: () => import('@/views/exampleViews/createSchema/index.vue'),
-                name: 'create-schema',
+                name: 'schema-create',
+                meta: {
+                    layoutName: 'main',
+                    redirectName: 'main-redirect',
+                    hasTag: true,
+                },
+            },
+            {
+                path: 'sample-label',
+                name: 'sample-label',
+                beforeEnter: (to, from, next) => {
+                    window.location.href = 'https://www.baidu.com';
+                    next();
+                },
+            },
+            {
+                path: 'result-audit',
+                component: () => import('@/views/exampleViews/auditPage/index.vue'),
+                name: 'result-audit',
+                meta: {
+                    layoutName: 'main',
+                    redirectName: 'main-redirect',
+                    hasTag: true,
+                },
+            },
+            {
+                path: 'hotEvent-recommand',
+                component: () => import('@/views/exampleViews/hotEventRecommand/index.vue'),
+                name: 'hotEvent-recommand',
+                meta: {
+                    layoutName: 'main',
+                    redirectName: 'main-redirect',
+                    hasTag: true,
+                },
+            },
+            {
+                path: 'hotWord-find',
+                component: () => import('@/views/exampleViews/hotWordFind/index.vue'),
+                name: 'hotWord-find',
                 meta: {
                     layoutName: 'main',
                     redirectName: 'main-redirect',
@@ -134,7 +191,6 @@ export const constantRoutes = [
                 meta: {
                     layoutName: 'main',
                     redirectName: 'main-redirect',
-                    hasTag: true,
                 },
             },
             {
@@ -144,7 +200,6 @@ export const constantRoutes = [
                 meta: {
                     layoutName: 'main',
                     redirectName: 'main-redirect',
-                    hasTag: true,
                 },
             },
             {
@@ -154,7 +209,6 @@ export const constantRoutes = [
                 meta: {
                     layoutName: 'main',
                     redirectName: 'main-redirect',
-                    hasTag: true,
                 },
             },
             {
@@ -164,7 +218,6 @@ export const constantRoutes = [
                 meta: {
                     layoutName: 'main',
                     redirectName: 'main-redirect',
-                    hasTag: true,
                 },
             },
             {
